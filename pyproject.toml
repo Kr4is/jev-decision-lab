@@ -1,0 +1,41 @@
+[project]
+name = "jev-decision-lab"
+version = "0.2.0"
+description = "Workspace for the Decision Lab: JEV and OpenAI models raced on the same ticket, plus decision-model patterns as LangGraph graphs."
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = ["jev-vs-llm[web]", "decision-patterns"]
+
+[dependency-groups]
+dev = ["pytest>=8", "httpx>=0.27", "ruff>=0.8", "pre-commit>=4"]
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["jev-vs-llm", "decision-patterns"]
+
+[tool.uv.sources]
+jev-vs-llm = { workspace = true }
+decision-patterns = { workspace = true }
+
+[tool.pytest.ini_options]
+testpaths = ["jev-vs-llm/tests", "decision-patterns/tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+extend-exclude = [".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "C4", "RUF"]
+ignore = [
+    "E501",   # ruff format handles code; long strings and comments stay
+    "B905",   # zip() lengths are equal by construction
+    "RUF001", "RUF002", "RUF003",  # the UI copy uses typographic dots/dashes on purpose
+]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/*" = ["B011"]

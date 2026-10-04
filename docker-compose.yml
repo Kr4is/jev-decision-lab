@@ -1,0 +1,15 @@
+services:
+  decision-lab:
+    build: .
+    image: jev-decision-lab
+    restart: unless-stopped
+    ports:
+      # Loopback by default. Put HTTPS (Caddy, Traefik, nginx) in front, then either keep this and proxy to
+      # 127.0.0.1:8765, or set BIND_ADDR=0.0.0.0 to reach it on your LAN. Keys travel in request bodies: use HTTPS.
+      - "${BIND_ADDR:-127.0.0.1}:${PORT:-8765}:8765"
+    environment:
+      # Nothing to configure for models, prices, keys or endpoints: users bring their own in the page.
+      BLOCK_PRIVATE_URLS: ${BLOCK_PRIVATE_URLS:-}  # set to 1 on a shared instance: refuse LAN and loopback addresses
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]

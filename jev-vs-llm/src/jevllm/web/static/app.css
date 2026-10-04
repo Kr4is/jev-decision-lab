@@ -1,0 +1,75 @@
+/* Palette: Brass, Eggshell, Dark Grey, Pure White/Black, Teal + Byzantium as secondary. Montserrat: SemiBold headings, Medium subheads, Light body,
+   Regular all-caps overline at +16% tracking. Sharp corners, brass hairlines. */
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 300; font-display: swap; src: url("/static/fonts/Montserrat-Light.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 400; font-display: swap; src: url("/static/fonts/Montserrat-Regular.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 500; font-display: swap; src: url("/static/fonts/Montserrat-Medium.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 600; font-display: swap; src: url("/static/fonts/Montserrat-SemiBold.woff2") format("woff2"); }
+
+:root {
+  --eggshell: #ECECE7;
+  --white: #FFFFFF;
+  --ink: #1F1F1F;
+  --black: #000000;
+  --brass: #A28354;          /* lines, bars, fills */
+  --brass-ink: #7A6034;      /* brass for TEXT on light grounds: plain brass is 3.0:1 on eggshell, this is 5:1 */
+  --teal: #006666;
+  --byz: #5A526A;
+  --muted: #55555A;
+  --hair: rgba(162, 131, 84, .6);
+  --sans: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --gap: 24px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--eggshell); color: var(--ink); font: 300 1rem/1.6 var(--sans); }
+h1, h2 { font-weight: 600; line-height: 1.25; margin: 0; }
+h2 { font-size: 1.25rem; }
+p { margin: 0; }
+strong { font-weight: 500; }
+.skip { position: absolute; left: -999px; top: 0; background: var(--black); color: var(--eggshell); padding: 12px 16px; z-index: 10; }
+.skip:focus { left: 0; }
+:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+.over { font-weight: 400; font-size: .8125rem; text-transform: uppercase; letter-spacing: .16em; color: var(--brass-ink); }
+.hint { font-size: .8125rem; color: var(--muted); }
+.field-label { display: block; font-weight: 500; font-size: .9375rem; margin-bottom: 8px; }
+.field-label.small { font-size: .8125rem; margin-top: 4px; }
+
+
+.lede { max-width: 62ch; font-size: 1.125rem; }
+main { max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 56px) 80px; }
+a.over { text-decoration: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+[hidden] { display: none !important; }
+
+/* top bar, shared by the landing page and the lab */
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px; padding: 20px clamp(16px, 4vw, 56px); border-bottom: 1px solid var(--hair); }
+.wordmark { display: inline-flex; align-items: center; gap: 12px; font-weight: 600; letter-spacing: .02em; text-decoration: none; color: inherit; }
+.wordmark .mark { display: block; }
+.top nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; font-weight: 400; font-size: .9375rem; }
+.top nav a:not(.btn) { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; }
+.top nav a:not(.btn):hover { border-bottom-color: var(--brass); }
+.top .btn { padding: 10px 20px; }
+
+textarea, input[type="text"], input[type="password"], input[type="number"], select {
+  width: 100%; font: 300 1rem/1.5 var(--sans); color: var(--ink); background: var(--eggshell);
+  border: 1px solid var(--ink); border-radius: 0; padding: 12px 14px;
+}
+textarea { resize: vertical; min-height: 64px; }
+input[type="number"] { width: 96px; padding: 8px 10px; }
+select { padding: 10px 12px; }
+.linkish { font: inherit; background: none; border: 0; border-bottom: 1px solid var(--brass); padding: 0; color: var(--ink); cursor: pointer; }
+.linkish:hover { background: rgba(162, 131, 84, .22); }
+
+/* buttons */
+.btn { display: inline-block; text-decoration: none; text-align: center; font: 600 .9375rem var(--sans); padding: 14px 28px; border-radius: 0; border: 1px solid var(--black); cursor: pointer; }
+.btn.primary { background: var(--black); color: var(--eggshell); }
+.btn.primary:hover:not(:disabled) { background: var(--brass); color: var(--black); border-color: var(--brass); }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn.ghost:hover:not(:disabled) { background: rgba(162, 131, 84, .22); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.foot { border-top: 1px solid var(--hair); padding: 28px clamp(16px, 4vw, 56px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; font-weight: 400; }
+.foot .hint { max-width: 60ch; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }

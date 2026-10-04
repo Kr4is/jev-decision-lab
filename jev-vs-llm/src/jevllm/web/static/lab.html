@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab · Decision Lab</title>
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="stylesheet" href="/static/app.css">
+  <link rel="stylesheet" href="/static/lab.css">
+</head>
+<body class="lab">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="wordmark" href="/"><img class="mark" src="/static/logo.svg" width="30" height="30" alt=""><span>Decision Lab</span></a>
+    <nav aria-label="Page">
+      <a href="/#results">Results</a>
+      <a href="/#cases">Use cases</a>
+      <a class="btn ghost" href="/">Home</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="intro">
+      <p class="over">The lab</p>
+      <h1>Test a decision model against LLMs on your own tickets</h1>
+      <p class="lede">Connect JEV and one or more LLMs, add tickets together with the answer you expect, and see which one gets it right, how fast, and at what cost.</p>
+    </section>
+
+    <ol class="steps">
+      <!-- 1 ------------------------------------------------------------------------------ contenders -->
+      <li class="step" id="step-connect" aria-labelledby="h-connect">
+        <header class="step-head">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div>
+            <h2 id="h-connect">Connect your contenders</h2>
+            <p class="hint">Your keys stay in this browser and are sent only with your own requests. The server never stores or logs them.</p>
+          </div>
+        </header>
+
+        <form class="contenders" id="connect" autocomplete="off">
+          <fieldset class="contender" id="c-jev">
+            <legend class="over">Decision model</legend>
+            <h3>JEV <small>TypeSafe</small></h3>
+            <p class="what">Answers with a probability for every option.</p>
+            <label class="field-label small" for="jev-key">TypeSafe key</label>
+            <input id="jev-key" type="password" autocomplete="new-password" spellcheck="false" maxlength="512" placeholder="Paste your TypeSafe key">
+            <p class="status" id="jev-status" role="status"></p>
+            <div class="price" id="jev-price"></div>
+          </fieldset>
+
+          <fieldset class="contender" id="c-llm">
+            <legend class="over">LLM</legend>
+            <h3>Your language models</h3>
+            <p class="what">Answer in words and say how sure they are. Add as many as you want to compare.</p>
+
+            <div class="segmented" role="radiogroup" aria-label="Where the LLM runs">
+              <label><input type="radio" name="provider" value="openai"><span>OpenAI</span></label>
+              <label><input type="radio" name="provider" value="litellm"><span>LiteLLM</span></label>
+            </div>
+
+            <div id="llm-openai">
+              <label class="field-label small" for="openai-key">OpenAI key</label>
+              <input id="openai-key" type="password" autocomplete="new-password" spellcheck="false" maxlength="512" placeholder="Paste your OpenAI key">
+            </div>
+            <div id="llm-litellm" hidden>
+              <label class="field-label small" for="litellm-url">LiteLLM address</label>
+              <input id="litellm-url" type="text" inputmode="url" spellcheck="false" maxlength="300" placeholder="http://litellm:4000">
+              <label class="field-label small" for="litellm-key">LiteLLM key</label>
+              <input id="litellm-key" type="password" autocomplete="new-password" spellcheck="false" maxlength="512" placeholder="Virtual key for your proxy">
+              <p class="hint">This server calls the address you type, so only use one you trust. It never follows redirects and refuses cloud metadata addresses. Each request asks your proxy to skip its cache, so the latency you see is real.</p>
+            </div>
+
+            <label class="field-label small" for="llm-model">Models to compare</label>
+            <div class="add-row">
+              <input id="llm-model" type="text" list="model-suggestions" spellcheck="false" maxlength="80" placeholder="Type a model id, then Add">
+              <button class="btn ghost" id="add-model" type="button">Add</button>
+            </div>
+            <datalist id="model-suggestions"></datalist>
+            <p class="hint"><button class="linkish" id="load-models" type="button">Load the models from my account</button> <span id="models-hint" role="status"></span></p>
+            <ul class="model-chips" id="llm-models" aria-label="Models you will compare"></ul>
+            <p class="status" id="llm-status" role="status"></p>
+          </fieldset>
+        </form>
+
+        <div class="connect-foot">
+          <label class="check"><input id="remember" type="checkbox"> Remember on this device</label>
+          <button class="linkish" id="forget" type="button">Forget my keys</button>
+          <label class="check"><input id="baseline" type="checkbox"> Also run a keyword baseline (free, no key)</label>
+        </div>
+        <p class="hint warn" id="insecure" hidden>This page is served over plain HTTP: anyone on the network could read your keys. Use HTTPS or a VPN.</p>
+      </li>
+
+      <!-- 2 ------------------------------------------------------------------------------ tickets -->
+      <li class="step" id="step-tickets" aria-labelledby="h-tickets">
+        <header class="step-head">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div>
+            <h2 id="h-tickets">Choose the tickets</h2>
+            <p class="hint">Each ticket needs the answer you expect, so the results can say who was right. The correct team is required; whether it should page on-call is optional.</p>
+          </div>
+        </header>
+
+        <div class="toolbar">
+          <label class="field-label small" for="source">Start from</label>
+          <select id="source"><option value="">A use case…</option></select>
+          <button class="btn ghost" id="load-source" type="button">Load</button>
+          <span class="spacer"></span>
+          <button class="btn ghost" id="add-ticket" type="button">Add a ticket</button>
+          <button class="btn ghost" id="open-paste" type="button">Paste a batch</button>
+          <button class="linkish" id="clear-tickets" type="button">Remove all</button>
+        </div>
+
+        <div class="paste" id="paste" hidden>
+          <label class="field-label small" for="paste-text">One ticket per line as JSON, or a CSV with a header row</label>
+          <textarea id="paste-text" rows="6" spellcheck="false" placeholder='{"text": "I was charged twice", "team": "billing", "page": false}&#10;{"text": "Checkout returns 500 for everyone", "team": "infra", "page": true}&#10;&#10;or, as CSV:&#10;text,team,page&#10;"I was charged twice",billing,no'></textarea>
+          <p class="hint"><strong>team</strong> is billing, infra, account or security (or <em>none</em> if there is no single right answer). <strong>page</strong> is yes, no, or empty.</p>
+          <div class="paste-actions">
+            <button class="btn ghost" id="paste-add" type="button">Add these tickets</button>
+            <button class="linkish" id="paste-cancel" type="button">Cancel</button>
+            <span class="hint" id="paste-hint" role="status"></span>
+          </div>
+        </div>
+
+        <div class="scroll">
+          <table class="tickets" id="tickets">
+            <caption class="sr-only">Tickets to test, with the expected answers</caption>
+            <thead><tr><th scope="col">Ticket</th><th scope="col">Correct team</th><th scope="col">Should page on-call?</th><th scope="col"><span class="sr-only">Remove</span></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="empty" id="no-tickets">No tickets yet. Load a use case, add your own ticket, or paste a batch.</p>
+        <p class="hint" id="ticket-count" role="status"></p>
+      </li>
+
+      <!-- 3 ------------------------------------------------------------------------------ run + results -->
+      <li class="step" id="step-run" aria-labelledby="h-run">
+        <header class="step-head">
+          <span class="step-n" aria-hidden="true">3</span>
+          <div>
+            <h2 id="h-run">Run it and read the results</h2>
+            <p class="hint" id="run-hint"></p>
+          </div>
+        </header>
+
+        <div class="runbar">
+          <button class="btn primary" id="run" type="button">Run the comparison</button>
+          <button class="btn ghost" id="stop" type="button" hidden>Stop</button>
+          <details class="threshold">
+            <summary>Settings</summary>
+            <label>Send to a person below this confidence
+              <input id="threshold" type="number" min="0" max="1" step="0.05" value="0.60">
+            </label>
+          </details>
+        </div>
+        <p class="hint warn" id="problem" role="alert"></p>
+
+        <div id="results" hidden>
+          <p class="hint" id="progress" role="status"></p>
+          <div class="score" id="score"></div>
+          <div class="scroll">
+            <table class="compare" id="compare">
+              <caption class="sr-only">What each contender decided for every ticket</caption>
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </main>
+
+  <footer class="foot">
+    <a class="wordmark" href="/"><img class="mark" src="/static/logo.svg" width="36" height="36" alt=""><span>Decision Lab</span></a>
+    <p class="hint">Your keys are used for your own requests only and are never stored on the server.</p>
+  </footer>
+
+  <script src="/static/lab.js" defer></script>
+</body>
+</html>

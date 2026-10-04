@@ -1,0 +1,15 @@
+[build-system]
+requires = ["uv_build>=0.8,<0.12"]
+build-backend = "uv_build"
+
+[project]
+name = "decision-patterns"
+version = "0.1.0"
+description = "Four architecture patterns for putting a decision model (Jev, Kev, Laya, ...) inside an agent, as LangGraph graphs. Offline-runnable."
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = ["langgraph>=0.2", "langchain-core>=0.3"]
+
+[tool.uv.build-backend]
+module-name = "patterns"

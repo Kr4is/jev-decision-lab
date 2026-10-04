@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+.env
+**/results/*
+!**/results/.gitkeep
+.DS_Store
+.omc/
+.claude/
+.playwright-mcp/

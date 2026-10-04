@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Decision Lab</title>
+  <meta name="description" content="Race a decision model against LLMs on the same ticket and compare what each decided, how sure it was, how long it took and what it cost.">
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="preload" href="/static/fonts/IBMPlexMono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/static/app.css">
+  <link rel="stylesheet" href="/static/landing.css">
+</head>
+<body class="landing">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="wordmark" href="/"><img class="mark" src="/static/logo.svg" width="30" height="30" alt=""><span>Decision Lab</span></a>
+    <nav aria-label="Page">
+      <a href="#results">Results</a>
+      <a href="#cases">Use cases</a>
+      <a href="#method">Method</a>
+      <a class="btn ghost" href="/lab">Open the lab</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <svg class="hero-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <g transform="rotate(-3 32 32)" fill="none" filter="url(#rough-mark)">
+            <rect x="3" y="3" width="58" height="58" stroke="#1F1F1F" stroke-width="4.5"/>
+            <rect x="10" y="10" width="44" height="44" stroke="#A28354" stroke-width="1.5"/>
+            <path d="M32 51V37" stroke="#1F1F1F" stroke-width="4.5"/>
+            <path d="M32 37 20 24" stroke="#1F1F1F" stroke-width="3"/>
+            <path d="M32 37 44 24" stroke="#006666" stroke-width="4.5"/>
+            <circle cx="18.5" cy="22" r="3.2" stroke="#1F1F1F" stroke-width="2.4"/>
+            <circle cx="45.5" cy="22" r="5" fill="#006666"/>
+          </g>
+        </svg>
+        <p class="over">Decision model versus LLM</p>
+        <h1 id="hero-title">Who should route your tickets: a decision model or an LLM?</h1>
+        <p class="lede">Decision Lab sends one ticket to a decision model and to your LLMs at the same time. You see what each one decided, how sure it was, how long it took and what it cost.</p>
+        <div class="cta">
+          <a class="btn primary" href="#results">See the results</a>
+          <a class="btn ghost" href="/lab">Open the lab</a>
+        </div>
+      </div>
+
+      <article class="slip hero-slip" aria-label="How a ticket is decided">
+        <p class="slip-head"><span>Incoming ticket</span><span class="slip-rule" aria-hidden="true"></span></p>
+        <blockquote class="slip-text">This isn't an outage, the status page is green and everything loads for us. We were billed twice for the annual plan though.</blockquote>
+        <p class="slip-label">Every model answers three questions</p>
+        <dl class="questions">
+          <div><dt>Which team should pick this ticket up first?</dt><dd>Billing, infra, account or security, with a probability for each.</dd></div>
+          <div><dt>Does this ticket need human attention right now?</dt><dd>A probability.</dd></div>
+          <div><dt>How severe is the impact on the customer?</dt><dd>0, 1 or 2.</dd></div>
+        </dl>
+        <p class="slip-label">Then plain code picks the queue</p>
+        <ul class="policy">
+          <li><b>Human review</b> when confidence is below your threshold (60% by default)</li>
+          <li><b>Page on-call</b> when it is urgent and severe</li>
+          <li><b>The team's queue</b> otherwise</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="band" aria-labelledby="does-title">
+      <h2 id="does-title" class="sr-only">What you can do in the lab</h2>
+      <div class="trio">
+        <div>
+          <h3>Connect your contenders</h3>
+          <p>Paste your TypeSafe key for JEV, then choose where the LLMs run (OpenAI, or your own LiteLLM proxy) and add as many models as you want to compare. They load from your account, and prices from a public list.</p>
+        </div>
+        <div>
+          <h3>Bring your own tickets</h3>
+          <p>Type one ticket or paste a batch, each with the correct team. Or start from one of the use cases below and edit it.</p>
+        </div>
+        <div>
+          <h3>Read who was right</h3>
+          <p>Accuracy against your answers, median latency and cost for each contender, ticket by ticket. Your keys stay in your browser tab.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="results" aria-labelledby="results-title">
+      <div class="section-intro">
+        <p class="over">Results</p>
+        <h2 id="results-title">JEV and LLMs on the same tickets</h2>
+        <p class="lede">What each one decided on a labeled set of support tickets and on three situations where the answer is not obvious. These are real answers, recorded on a date, with the models named below.</p>
+      </div>
+      <p class="recorded" id="recorded" role="status"></p>
+      <div id="ledger"></div>
+    </section>
+
+    <section id="cases" class="cases" aria-labelledby="cases-title">
+      <div class="section-intro">
+        <p class="over">Use cases</p>
+        <h2 id="cases-title">Ticket by ticket</h2>
+        <p class="lede">Each case is a handful of realistic tickets built to be hard for routing by keywords. Stamps show what each contender decided. Open any case in the lab, edit the tickets and the answers you expect, and run them with your own models.</p>
+      </div>
+      <div id="case-list"><noscript><p class="lede">The results are loaded by script. The lab needs JavaScript too.</p></noscript></div>
+    </section>
+
+    <section id="method" class="method" aria-labelledby="method-title">
+      <div class="section-intro">
+        <p class="over">Method</p>
+        <h2 id="method-title">What is measured, and what is not</h2>
+      </div>
+      <div class="method-grid">
+        <div>
+          <h3>In the lab</h3>
+          <p>For every ticket: the team, the probabilities, the routed queue, and whether it matches the answer you gave. For the set: accuracy, paging accuracy, median latency and cost.</p>
+        </div>
+        <div>
+          <h3>Not measured here</h3>
+          <p>Calibration (when it says 80%, is it right 80% of the time), consistency over repeated runs and injection rates. The hostile-input case shows single examples, not rates.</p>
+        </div>
+        <div>
+          <h3>Limits to keep in mind</h3>
+          <p>JEV returns a probability per option; an LLM states its own confidence. They are not the same quantity. Latency depends on where each model runs: one you host yourself is limited by your own hardware. Forty tickets is a demo, not a benchmark: measure on your own domain before deciding anything.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="keys" class="keys-band" aria-labelledby="keys-title">
+      <div>
+        <h2 id="keys-title">Your keys, your tokens</h2>
+        <p class="lede">Tick the free keyword baseline to try the lab without a key. Paste a key, or add the address of your own LiteLLM proxy, and your contenders unlock. Keys stay in your browser tab unless you choose to remember them, are sent only with your requests, and are never stored or logged by the server.</p>
+      </div>
+      <a class="btn primary" href="/lab">Open the lab</a>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <a class="wordmark" href="/"><img class="mark" src="/static/logo.svg" width="36" height="36" alt=""><span>Decision Lab</span></a>
+    <p class="hint">A research companion, not a product. Results depend on the models and prices you bring.</p>
+  </footer>
+
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="rough-mark" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.45" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="0.9"/>
+    </filter>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2"/>
+    </filter>
+  </svg>
+
+  <script src="/static/landing.js" defer></script>
+</body>
+</html>

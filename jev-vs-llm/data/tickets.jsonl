@@ -1,0 +1,40 @@
+{"id": "T01", "text": "I was charged twice for my October subscription. Please refund one of the payments.", "team": "billing", "urgent": false, "severity": 1, "tag": "plain"}
+{"id": "T02", "text": "Where can I download my invoice for last quarter?", "team": "billing", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T03", "text": "Our company card was charged $4,800 instead of $480 and our finance team needs this fixed today.", "team": "billing", "urgent": true, "severity": 1, "tag": "plain"}
+{"id": "T04", "text": "I'd like to upgrade from the Pro plan to Team. How does proration work?", "team": "billing", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T05", "text": "My coupon code SAVE20 isn't being applied at checkout.", "team": "billing", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T06", "text": "I am not reporting an outage, I'm asking why my VAT number is missing from the receipt.", "team": "billing", "urgent": false, "severity": 0, "tag": "negation"}
+{"id": "T07", "text": "Cancel my subscription before tomorrow's renewal or I'll dispute the charge with my bank.", "team": "billing", "urgent": true, "severity": 1, "tag": "plain"}
+{"id": "T08", "text": "The invoice shows a seat count of 50 but we only have 35 users.", "team": "billing", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T09", "text": "Payment keeps failing with 'card declined' even though my bank says the card is fine, and our service gets suspended in two hours.", "team": "billing", "urgent": true, "severity": 1, "tag": "ambiguous"}
+{"id": "T10", "text": "Refund request: I paid for the annual plan but I never used it.", "team": "billing", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T11", "text": "The deploy failed twice and customers are seeing 500 errors on checkout.", "team": "infra", "urgent": true, "severity": 2, "tag": "plain"}
+{"id": "T12", "text": "API latency has doubled since this morning's release.", "team": "infra", "urgent": true, "severity": 1, "tag": "plain"}
+{"id": "T13", "text": "The status page shows green but our dashboard won't load for anyone in the EU region.", "team": "infra", "urgent": true, "severity": 2, "tag": "ambiguous"}
+{"id": "T14", "text": "Scheduled backup job hasn't run for 3 days.", "team": "infra", "urgent": false, "severity": 1, "tag": "plain"}
+{"id": "T15", "text": "Our webhook deliveries are delayed by about 10 minutes.", "team": "infra", "urgent": false, "severity": 1, "tag": "plain"}
+{"id": "T16", "text": "This is not a billing issue: the export service times out whenever the file is over 100 MB.", "team": "infra", "urgent": false, "severity": 1, "tag": "negation"}
+{"id": "T17", "text": "Cron jobs are failing with out-of-memory errors in the staging cluster.", "team": "infra", "urgent": false, "severity": 1, "tag": "plain"}
+{"id": "T18", "text": "The entire platform is down, nothing loads, all our customers are affected right now.", "team": "infra", "urgent": true, "severity": 2, "tag": "plain"}
+{"id": "T19", "text": "Our CDN returns stale assets after every deploy.", "team": "infra", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T20", "text": "The sandbox environment is slow today, just a heads-up.", "team": "infra", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T21", "text": "I can't log in, the password reset email never arrives.", "team": "account", "urgent": false, "severity": 1, "tag": "plain"}
+{"id": "T22", "text": "Please change the email address on my profile to anna@example.com.", "team": "account", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T23", "text": "I was removed from the admin group by mistake and can't manage my team's projects.", "team": "account", "urgent": true, "severity": 1, "tag": "plain"}
+{"id": "T24", "text": "How do I enable two-factor authentication?", "team": "account", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T25", "text": "My account is locked after too many attempts and I have a client demo in 20 minutes.", "team": "account", "urgent": true, "severity": 1, "tag": "plain"}
+{"id": "T26", "text": "I don't want a refund, I just need my username changed.", "team": "account", "urgent": false, "severity": 0, "tag": "negation"}
+{"id": "T27", "text": "SSO login loops back to the sign-in page for everyone in our company.", "team": "account", "urgent": true, "severity": 2, "tag": "ambiguous"}
+{"id": "T28", "text": "How do I delete my account and all associated data?", "team": "account", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T29", "text": "My profile picture won't update.", "team": "account", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T30", "text": "Can you merge my two accounts? I signed up with different emails.", "team": "account", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T31", "text": "I received an email that looks like it's from you asking for my password. I think it's phishing.", "team": "security", "urgent": true, "severity": 1, "tag": "plain"}
+{"id": "T32", "text": "Our API key was accidentally committed to a public GitHub repo.", "team": "security", "urgent": true, "severity": 2, "tag": "plain"}
+{"id": "T33", "text": "I see logins to my account from a country I have never visited.", "team": "security", "urgent": true, "severity": 2, "tag": "plain"}
+{"id": "T34", "text": "Can you share your SOC 2 report?", "team": "security", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T35", "text": "I think someone is scraping our public endpoints, traffic spiked 50x from one IP range.", "team": "security", "urgent": true, "severity": 1, "tag": "ambiguous"}
+{"id": "T36", "text": "This is not a login problem: I got a 'new device' alert and I didn't sign in anywhere.", "team": "security", "urgent": true, "severity": 2, "tag": "negation"}
+{"id": "T37", "text": "What's your policy for reporting vulnerabilities?", "team": "security", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T38", "text": "A former employee still has access to our workspace and we found files downloaded last night.", "team": "security", "urgent": true, "severity": 2, "tag": "plain"}
+{"id": "T39", "text": "Please rotate the signing keys for our tenant as part of our quarterly security review.", "team": "security", "urgent": false, "severity": 0, "tag": "plain"}
+{"id": "T40", "text": "We need your latest penetration test summary for a vendor questionnaire.", "team": "security", "urgent": false, "severity": 0, "tag": "plain"}

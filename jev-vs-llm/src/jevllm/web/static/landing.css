@@ -1,0 +1,126 @@
+/* Landing page. Tokens, Montserrat and buttons come from app.css; everything here is scoped to body.landing.
+   The one gesture is the rubber stamp: a decision lands on a paper ticket. Everything else stays quiet. */
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("/static/fonts/IBMPlexMono-400.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url("/static/fonts/IBMPlexMono-500.woff2") format("woff2"); }
+
+body.landing { --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace; --slate: #5B6770; --section: clamp(64px, 9vw, 112px); }
+body.landing .defs { position: absolute; }
+body.landing a { color: inherit; }
+body.landing h3 { margin: 0; font-size: 1rem; font-weight: 600; line-height: 1.3; }
+body.landing main { padding-bottom: 0; }
+
+
+/* hero */
+body.landing .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; align-items: start; padding: clamp(40px, 7vw, 88px) 0 var(--section); }
+body.landing .hero-copy { display: grid; gap: 22px; justify-items: start; }
+body.landing h1 { font-size: clamp(2.25rem, 4.9vw, 3.75rem); font-weight: 600; line-height: 1.06; letter-spacing: -.02em; max-width: 15ch; }
+body.landing .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+
+/* paper ticket */
+body.landing .slip { position: relative; background: var(--white); border: 1px solid var(--hair); border-top: 3px solid var(--ink); padding: 22px 24px 24px; font-family: var(--mono); }
+body.landing .slip-head { display: flex; align-items: center; gap: 14px; font-size: .75rem; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); }
+body.landing .slip-rule { flex: 1; border-top: 1px dashed var(--brass); }
+body.landing .slip-text { margin: 16px 0 0; padding-left: 14px; border-left: 3px solid var(--brass); font-size: .9375rem; line-height: 1.6; white-space: pre-line; overflow-wrap: anywhere; }
+body.landing .slip-label { margin-top: 22px; font: 500 .6875rem/1.4 var(--sans); text-transform: uppercase; letter-spacing: .14em; color: var(--brass-ink); }
+body.landing .questions { margin: 10px 0 0; display: grid; gap: 12px; }
+body.landing .questions dt { font: 500 .9375rem/1.4 var(--sans); }
+body.landing .questions dd { margin: 2px 0 0; font-size: .8125rem; color: var(--muted); }
+body.landing .policy { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: .8125rem; }
+body.landing .policy b { font-weight: 500; }
+
+/* three things you can do */
+body.landing .band { border-block: 1px solid var(--hair); padding: clamp(36px, 5vw, 56px) 0; }
+body.landing .trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 48px; }
+body.landing .trio p { margin-top: 8px; color: var(--muted); font-weight: 400; }
+
+/* sections */
+body.landing .section-intro { display: grid; gap: 12px; justify-items: start; margin-bottom: 36px; }
+body.landing .section-intro h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); letter-spacing: -.01em; max-width: 24ch; }
+body.landing .cases, body.landing .method { padding-top: var(--section); }
+
+/* cases */
+body.landing .recorded { font: 400 .8125rem/1.5 var(--mono); color: var(--muted); border-left: 3px solid var(--brass); padding-left: 12px; margin-bottom: 8px; max-width: 80ch; }
+body.landing .case { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px 56px; padding: 44px 0; border-top: 1px solid var(--hair); }
+body.landing .case-copy { align-self: start; position: sticky; top: 24px; display: grid; gap: 14px; justify-items: start; }
+body.landing .case-copy h3 { font-size: 1.5rem; letter-spacing: -.01em; }
+body.landing .case-copy .watch { font-weight: 400; }
+body.landing .case-copy .watch b { display: block; font: 500 .6875rem/1.4 var(--sans); text-transform: uppercase; letter-spacing: .14em; color: var(--brass-ink); margin-bottom: 2px; }
+body.landing .slips { display: grid; gap: 18px; }
+body.landing .slips .slip { padding: 18px 20px 20px; border-top-width: 1px; }
+body.landing .slips .slip-text { margin-top: 0; }
+body.landing .slip-key { display: flex; flex-wrap: wrap; gap: 4px 24px; margin: 14px 0 0; font-size: .75rem; color: var(--muted); }
+body.landing .slip-key div { display: flex; gap: 8px; }
+body.landing .slip-key dt::after { content: ":"; }
+body.landing .slip-key dd { margin: 0; color: var(--ink); font-weight: 500; }
+body.landing .trap { margin-top: 10px; font: 300 .875rem/1.5 var(--sans); color: var(--muted); }
+body.landing .slip-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; margin-top: 16px; }
+body.landing .try { font: 500 .8125rem var(--sans); text-decoration: none; border-bottom: 1px solid var(--brass); padding-bottom: 1px; }
+body.landing .try:hover { background: rgba(162, 131, 84, .22); }
+
+/* the stamps */
+body.landing .stamps { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 16px; }
+body.landing .stamp { --ink-c: var(--ink); position: relative; display: grid; gap: 1px; padding: 9px 14px 8px; color: var(--ink-c); transform: rotate(-2deg); opacity: .94; mix-blend-mode: multiply; line-height: 1.35; }
+body.landing .stamp::before { content: ""; position: absolute; inset: 0; border: 2px solid currentColor; filter: url(#rough); pointer-events: none; }
+body.landing .stamp[data-kind="jev"] { --ink-c: var(--teal); }
+body.landing .stamp[data-kind="openai"] { --ink-c: var(--byz); }
+body.landing .stamp[data-kind="litellm"] { --ink-c: var(--slate); }
+body.landing .stamp[data-kind="systemone"] { --ink-c: var(--brass-ink); }
+body.landing .stamp[data-verdict="missed"]::before { border-style: dashed; }
+body.landing .stamp b { font: 600 .9375rem/1.2 var(--sans); text-transform: uppercase; letter-spacing: .12em; }
+body.landing .stamp span { font: 400 .6875rem/1.4 var(--mono); }
+body.landing .stamp .verdict { font-weight: 500; text-transform: uppercase; letter-spacing: .1em; }
+@keyframes thud { from { opacity: 0; transform: rotate(-6deg) scale(1.4); } to { opacity: .94; transform: rotate(-2deg) scale(1); } }
+@media (prefers-reduced-motion: no-preference) {
+  body.landing .slip.armed .stamp { opacity: 0; }
+  body.landing .slip.armed.in .stamp { animation: thud .26s cubic-bezier(.2, .9, .3, 1.15) both; animation-delay: calc(var(--i, 0) * 150ms); }
+}
+
+/* method */
+body.landing .method-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 48px; }
+body.landing .method-grid p { margin-top: 8px; color: var(--muted); font-weight: 400; }
+
+/* keys */
+body.landing .keys-band { margin-top: var(--section); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px 56px; background: var(--ink); color: var(--eggshell); padding: clamp(32px, 5vw, 56px); }
+body.landing .keys-band h2 { font-size: clamp(1.5rem, 2.8vw, 2rem); margin-bottom: 12px; }
+body.landing .keys-band .lede { font-size: 1rem; max-width: 56ch; color: rgba(236, 236, 231, .82); }
+body.landing .keys-band .btn.primary { background: var(--brass); border-color: var(--brass); color: var(--black); }
+body.landing .keys-band .btn.primary:hover { background: var(--eggshell); border-color: var(--eggshell); }
+body.landing .keys-band :focus-visible { outline-color: var(--eggshell); }
+body.landing .foot { margin-top: var(--section); }
+
+@media (max-width: 900px) {
+  body.landing .hero, body.landing .case, body.landing .trio, body.landing .method-grid { grid-template-columns: minmax(0, 1fr); }
+  body.landing .case-copy { position: static; }
+  body.landing .hero { gap: 40px; }
+}
+
+/* results ledger */
+body.landing .results { padding-top: var(--section); }
+body.landing .empty-note { border: 1px dashed var(--brass); padding: 28px; color: var(--muted); }
+body.landing .ledger { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--hair); border-top: 3px solid var(--ink); }
+body.landing .ledger caption { text-align: left; padding: 0 0 12px; font: 500 .75rem var(--sans); text-transform: uppercase; letter-spacing: .14em; color: var(--brass-ink); caption-side: top; }
+body.landing .ledger th, body.landing .ledger td { padding: 16px 18px; text-align: left; border-bottom: 1px solid rgba(162, 131, 84, .45); vertical-align: middle; }
+body.landing .ledger thead th { font: 500 .6875rem var(--sans); text-transform: uppercase; letter-spacing: .14em; color: var(--muted); padding-block: 12px; }
+body.landing .ledger tbody th { font-weight: 500; white-space: nowrap; }
+body.landing .ledger td { font: 400 .9375rem var(--mono); font-variant-numeric: tabular-nums; }
+body.landing .swatch { display: inline-block; width: 10px; height: 10px; margin-right: 10px; background: var(--ink); }
+body.landing .swatch[data-kind="jev"] { background: var(--teal); }
+body.landing .swatch[data-kind="openai"] { background: var(--byz); }
+body.landing .swatch[data-kind="litellm"] { background: var(--slate); }
+body.landing .meter { display: grid; gap: 6px; min-width: 200px; }
+body.landing .meter i { display: block; height: 8px; background: rgba(162, 131, 84, .35); }
+body.landing .meter b { display: block; height: 100%; background: var(--ink); }
+body.landing .meter b[data-kind="jev"] { background: var(--teal); }
+body.landing .meter b[data-kind="openai"] { background: var(--byz); }
+body.landing .meter b[data-kind="litellm"] { background: var(--slate); }
+body.landing .cases-tally { margin-top: 28px; display: grid; gap: 8px; }
+body.landing .cases-tally ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font: 400 .9375rem var(--mono); }
+@media (max-width: 900px) { body.landing .ledger th, body.landing .ledger td { padding: 12px; } body.landing .ledger { display: block; overflow-x: auto; } }
+
+body.landing #ledger { margin-top: 24px; }
+body.landing .recorded { margin-bottom: 0; }
+
+/* the logo opens the page: a stamp that lands once */
+body.landing .hero-mark { display: block; width: clamp(88px, 9vw, 116px); height: auto; margin-bottom: 4px; overflow: visible; }
+@keyframes land { from { opacity: 0; transform: scale(1.4) rotate(-5deg); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) { body.landing .hero-mark { animation: land .5s cubic-bezier(.2, .9, .3, 1.15) both; } }

@@ -1,0 +1,399 @@
+{
+  "recorded_at": "2026-10-04T22:13:57.183Z",
+  "threshold": 0.6,
+  "backends": [
+    {
+      "id": "jev:",
+      "kind": "jev",
+      "role": "decision",
+      "label": "JEV · jev-1.13.0"
+    },
+    {
+      "id": "litellm:gpt-6-luna",
+      "kind": "litellm",
+      "role": "llm",
+      "label": "LiteLLM · gpt-6-luna"
+    },
+    {
+      "id": "litellm:qwen3.8-27b",
+      "kind": "litellm",
+      "role": "llm",
+      "label": "LiteLLM · qwen3.8-27b",
+      "recorded_at": "2026-10-04T22:36:11.190Z"
+    }
+  ],
+  "results": {
+    "negation": {
+      "negation-1": {
+        "jev:": {
+          "ok": true,
+          "team": "account",
+          "queue": "account",
+          "confidence": 1,
+          "latency_ms": 299.36640098458156,
+          "cost_usd": 2.0201999999999997e-05,
+          "cost_known": true
+        },
+        "litellm:gpt-6-luna": {
+          "ok": true,
+          "team": "account",
+          "queue": "account",
+          "confidence": 0.99,
+          "latency_ms": 794.8556100018322,
+          "cost_usd": 3.98e-05,
+          "cost_known": true
+        },
+        "litellm:qwen3.8-27b": {
+          "ok": true,
+          "team": "account",
+          "queue": "account",
+          "confidence": 0.98,
+          "latency_ms": 7822.6228799903765,
+          "cost_usd": 0,
+          "cost_known": false
+        }
+      },
+      "negation-2": {
+        "jev:": {
+          "ok": true,
+          "team": "billing",
+          "queue": "billing",
+          "confidence": 1,
+          "latency_ms": 256.6081509576179,
+          "cost_usd": 2.0243999999999995e-05,
+          "cost_known": true
+        },
+        "litellm:gpt-6-luna": {
+          "ok": true,
+          "team": "billing",
+          "queue": "billing",
+          "confidence": 0.99,
+          "latency_ms": 815.2835529763252,
+          "cost_usd": 3.99e-05,
+          "cost_known": true
+        },
+        "litellm:qwen3.8-27b": {
+          "ok": true,
+          "team": "billing",
+          "queue": "billing",
+          "confidence": 0.98,
+          "latency_ms": 23923.97819296457,
+          "cost_usd": 0,
+          "cost_known": false
+        }
+      },
+      "negation-3": {
+        "jev:": {
+          "ok": true,
+          "team": "account",
+          "queue": "account",
+          "confidence": 0.95,
+          "latency_ms": 294.2950670258142,
+          "cost_usd": 2.0033999999999998e-05,
+          "cost_known": true
+        },
+        "litellm:gpt-6-luna": {
+          "ok": true,
+          "team": "account",
+          "queue": "account",
+          "confidence": 0.99,
+          "latency_ms": 801.7077640397474,
+          "cost_usd": 3.95e-05,
+          "cost_known": true
+        },
+        "litellm:qwen3.8-27b": {
+          "ok": true,
+          "team": "account",
+          "queue": "account",
+          "confidence": 0.95,
+          "latency_ms": 20151.139204972424,
+          "cost_usd": 0,
+          "cost_known": false
+        }
+      },
+      "negation-4": {
+        "jev:": {
+          "ok": true,
+          "team": "billing",
+          "queue": "billing",
+          "confidence": 0.89,
+          "latency_ms": 365.31767703127116,
+          "cost_usd": 1.995e-05,
+          "cost_known": true
+        },
+        "litellm:gpt-6-luna": {
+          "ok": true,
+          "team": "billing",
+          "queue": "billing",
+          "confidence": 0.98,
+          "latency_ms": 1024.1285240044817,
+          "cost_usd": 3.9099999999999995e-05,
+          "cost_known": true
+        },
+        "litellm:qwen3.8-27b": {
+          "ok": true,
+          "team": "billing",
+          "queue": "billing",
+          "confidence": 0.95,
+          "latency_ms": 28494.167488010135,
+          "cost_usd": 0,
+          "cost_known": false
+        }
+      }
+    },
+    "urgency": {
+      "urgency-1": {
+        "jev:": {
+          "ok": true,
+          "team": "infra",
+          "queue": "page_oncall",
+          "confidence": 1,
+          "latency_ms": 242.232499003876,
+          "cost_usd": 2.0286e-05,
+          "cost_known": true
+        },
+        "litellm:gpt-6-luna": {
+          "ok": true,
+          "team": "infra",
+          "queue": "page_oncall",
+          "confidence": 0.99,
+          "latency_ms": 750.1563969999552,
+          "cost_usd": 3.9699999999999996e-05,
+          "cost_known": true
+        },
+        "litellm:qwen3.8-27b": {
+          "ok": true,
+          "team": "infra",
+          "queue": "page_oncall",
+          "confidence": 0.98,
+          "latency_ms": 6604.691029991955,
+          "cost_usd": 0,
+          "cost_known": false
+        }
+      },
+      "urgency-2": {
+        "jev:": {
+          "ok": true,
+          "team": "infra",
+          "queue": "infra",
+          "confidence": 1,
+          "latency_ms": 375.87655999232084,
+          "cost_usd": 2.0075999999999995e-05,
+          "cost_known": true
+        },
+        "litellm:gpt-6-luna": {
+          "ok": true,
+          "team": "infra",
+          "queue": "infra",
+          "confidence": 0.96,
+          "latency_ms": 872.7964219870046,
+          "cost_usd": 3.96e-05,
+          "cost_known": true
+        },
+        "litellm:qwen3.8-27b": {
+          "ok": true,
+          "team": "infra",
+          "queue": "infra",
+          "confidence": 0.9,
+          "latency_ms": 11149.673659994733,
+          "cost_usd": 0,
+          "cost_known": false
+        }
+      },
+      "urgency-3": {
+        "jev:": {
+          "ok": true,
+          "team": "security",
+          "queue": "page_oncall",
+          "confidence": 1,
+          "latency_ms": 249.60416101384908,
+          "cost_usd": 2.0201999999999997e-05,
+          "cost_known": true
+        },
+        "litellm:gpt-6-luna": {
+          "ok": true,
+          "team": "security",
+          "queue": "page_oncall",
+          "confidence": 0.99,
+          "latency_ms": 818.1545179686509,
+          "cost_usd": 3.98e-05,
+          "cost_known": true
+        },
+        "litellm:qwen3.8-27b": {
+          "ok": true,
+          "team": "security",
+          "queue": "page_oncall",
+          "confidence": 0.98,
+          "latency_ms": 6250.937754986808,
+          "cost_usd": 0,
+          "cost_known": false
+        }
+      },
+      "urgency-4": {
+        "jev:": {
+          "ok": true,
+          "team": "account",
+          "queue": "page_oncall",
+          "confidence": 0.97,
+          "latency_ms": 332.0040210383013,
+          "cost_usd": 2.0118e-05,
+          "cost_known": true
+        },
+        "litellm:gpt-6-luna": {
+          "ok": true,
+          "team": "account",
+          "queue": "account",
+          "confidence": 0.92,
+          "latency_ms": 925.2370500471443,
+          "cost_usd": 3.9699999999999996e-05,
+          "cost_known": true
+        },
+        "litellm:qwen3.8-27b": {
+          "ok": true,
+          "team": "account",
+          "queue": "page_oncall",
+          "confidence": 0.92,
+          "latency_ms": 14464.319827966392,
+          "cost_usd": 0,
+          "cost_known": false
+        }
+      }
+    },
+    "orders": {
+      "orders-1": {
+        "jev:": {
+          "ok": true,
+          "team": "infra",
+          "queue": "page_oncall",
+          "confidence": 1,
+          "latency_ms": 263.7169639929198,
+          "cost_usd": 2.0874e-05,
+          "cost_known": true
+        },
+        "litellm:gpt-6-luna": {
+          "ok": true,
+          "team": "infra",
+          "queue": "page_oncall",
+          "confidence": 0.99,
+          "latency_ms": 1133.9723370037973,
+          "cost_usd": 4.0799999999999996e-05,
+          "cost_known": true
+        },
+        "litellm:qwen3.8-27b": {
+          "ok": true,
+          "team": "infra",
+          "queue": "page_oncall",
+          "confidence": 0.99,
+          "latency_ms": 9576.513350999448,
+          "cost_usd": 0,
+          "cost_known": false
+        }
+      },
+      "orders-2": {
+        "jev:": {
+          "ok": true,
+          "team": "account",
+          "queue": "account",
+          "confidence": 0.8,
+          "latency_ms": 230.85254098987207,
+          "cost_usd": 2.0537999999999995e-05,
+          "cost_known": true
+        },
+        "litellm:gpt-6-luna": {
+          "ok": true,
+          "team": "account",
+          "queue": "account",
+          "confidence": 0.96,
+          "latency_ms": 992.1682030544616,
+          "cost_usd": 4.0499999999999995e-05,
+          "cost_known": true
+        },
+        "litellm:qwen3.8-27b": {
+          "ok": true,
+          "team": "account",
+          "queue": "account",
+          "confidence": 0.85,
+          "latency_ms": 33595.037446997594,
+          "cost_usd": 0,
+          "cost_known": false
+        }
+      },
+      "orders-3": {
+        "jev:": {
+          "ok": true,
+          "team": "billing",
+          "queue": "billing",
+          "confidence": 1,
+          "latency_ms": 271.3747380184941,
+          "cost_usd": 2.0453999999999998e-05,
+          "cost_known": true
+        },
+        "litellm:gpt-6-luna": {
+          "ok": true,
+          "team": "billing",
+          "queue": "billing",
+          "confidence": 0.99,
+          "latency_ms": 807.9208830022253,
+          "cost_usd": 4.02e-05,
+          "cost_known": true
+        },
+        "litellm:qwen3.8-27b": {
+          "ok": true,
+          "team": "billing",
+          "queue": "billing",
+          "confidence": 0.98,
+          "latency_ms": 15351.636609004345,
+          "cost_usd": 0,
+          "cost_known": false
+        }
+      }
+    }
+  },
+  "dataset": {
+    "n": 40,
+    "summary": {
+      "jev:": {
+        "done": 40,
+        "errors": 0,
+        "accuracy": 1,
+        "scored": 40,
+        "correct": 40,
+        "paging": [
+          0,
+          0
+        ],
+        "p50_ms": 306.4205370028503,
+        "cost_usd": 0.0007901879999999998,
+        "cost_known": true
+      },
+      "litellm:gpt-6-luna": {
+        "done": 40,
+        "errors": 0,
+        "accuracy": 0.975,
+        "scored": 40,
+        "correct": 39,
+        "paging": [
+          0,
+          0
+        ],
+        "p50_ms": 850.9544800035655,
+        "cost_usd": 0.0015503999999999995,
+        "cost_known": true
+      },
+      "litellm:qwen3.8-27b": {
+        "done": 40,
+        "errors": 0,
+        "accuracy": 0.975,
+        "scored": 40,
+        "correct": 39,
+        "paging": [
+          0,
+          0
+        ],
+        "p50_ms": 10088.6768019991,
+        "cost_usd": 0,
+        "cost_known": false
+      }
+    }
+  }
+}
