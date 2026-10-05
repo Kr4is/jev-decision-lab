@@ -56,7 +56,7 @@ flowchart LR
 ## Install
 
 ```bash
-git clone https://github.com/<your-user>/jev-decision-lab.git
+git clone https://github.com/Kr4is/jev-decision-lab.git
 cd jev-decision-lab
 uv sync                      # creates .venv and installs both packages plus dev tools
 ```
@@ -97,10 +97,10 @@ The image is small (about 210 MB), runs as a non-root user with a read-only file
 | `PORT` (default `8765`) | Host port |
 | `BLOCK_PRIVATE_URLS` | Same as above. Inside the container `127.0.0.1` is the container itself: type your LiteLLM's LAN address or its Docker service name |
 
-Prebuilt multi-arch images (amd64 and arm64) are published to GitHub Container Registry on every push to `main` (`edge`) and on every `v*` tag (`1.2.3`, `1.2`):
+Prebuilt multi-arch images (amd64 and arm64) are published to GitHub Container Registry. Every push to `main` updates `latest` and adds a `sha-<commit>` tag you can pin to; every `v*` tag also publishes `1.2.3` and `1.2`:
 
 ```bash
-docker run -d -p 127.0.0.1:8765:8765 --read-only --cap-drop ALL ghcr.io/<your-user>/jev-decision-lab:edge
+docker run -d -p 127.0.0.1:8765:8765 --read-only --cap-drop ALL ghcr.io/kr4is/jev-decision-lab:latest
 ```
 
 Keys travel in request bodies, so put a reverse proxy with HTTPS in front (Caddy, Traefik, nginx) and keep `BIND_ADDR=127.0.0.1` if the proxy runs on the same host. Example Caddyfile:
