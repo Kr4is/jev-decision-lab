@@ -154,3 +154,8 @@ More detail in each package: [`jev-vs-llm/README.md`](jev-vs-llm/README.md) and 
 ## License
 
 [MIT](LICENSE). Montserrat and IBM Plex Mono are bundled under the SIL Open Font License (licenses in `jev-vs-llm/src/jevllm/web/static/fonts/`).
+
+## Previews
+
+Every pull request gets a preview deployment at `https://jev-pr-<PR number>.brunocabado.com`. It is reachable only from the LAN or tailnet, not from the public internet.
+The image is built by [`.github/workflows/pr-preview.yml`](.github/workflows/pr-preview.yml) on each push to the PR (pull requests from forks are skipped).
