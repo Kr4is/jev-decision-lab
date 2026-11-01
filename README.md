@@ -154,3 +154,5 @@ More detail in each package: [`jev-vs-llm/README.md`](jev-vs-llm/README.md) and 
 ## License
 
 [MIT](LICENSE). Montserrat and IBM Plex Mono are bundled under the SIL Open Font License (licenses in `jev-vs-llm/src/jevllm/web/static/fonts/`).
+
+Changes to this repo can be proposed by the homelab agent factory through draft pull requests.
