@@ -22,8 +22,9 @@ RUN useradd --system --uid 10001 --no-create-home app
 WORKDIR /app
 COPY --from=build --chown=app /app /app
 USER app
+# PORT is optional (default 8765); the homelab PR previews set PORT=8080.
 EXPOSE 8765
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s \
-    CMD python -c "import urllib.request as u; u.urlopen('http://127.0.0.1:8765/healthz', timeout=2)"
+    CMD python -c "import os, urllib.request as u; u.urlopen('http://127.0.0.1:%s/healthz' % os.getenv('PORT', '8765'), timeout=2)"
 # 0.0.0.0 is the container's own interface: publish the port deliberately (see docker-compose.yml)
-CMD ["jevllm-web", "--host", "0.0.0.0", "--port", "8765"]
+CMD ["sh", "-c", "exec jevllm-web --host 0.0.0.0 --port \"${PORT:-8765}\""]
