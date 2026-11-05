@@ -9,7 +9,7 @@ on:
 jobs:
   preview:
     if: contains(github.event.pull_request.labels.*.name, 'preview')
-    uses: Kr4is/homelab-gitops/.github/workflows/pr-preview.yml@master
+    uses: Kr4is/homelab-workflows/.github/workflows/pr-preview.yml@main
     permissions:
       contents: read
       packages: write
